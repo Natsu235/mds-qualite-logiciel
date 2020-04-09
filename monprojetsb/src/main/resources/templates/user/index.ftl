@@ -5,9 +5,7 @@
 </head>
 
 <body>
-  <#if page??>
-  <h1> ${page} </h1>
-  </#if>
+  <h1> User Index </h1>
   <a href="create">Create new</a>
   <table class="table table-bordered table-hover">
     <tr>

@@ -1,5 +1,6 @@
 package com.tactfactory.monprojetsb.monprojetsb.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,6 +20,7 @@ public class User {
 
 	public User() {
 		super();
+		this.products = new ArrayList<Product>();
 	}
 
 	public User(Long id, String firstname, String lastname, List<Product> products) {
