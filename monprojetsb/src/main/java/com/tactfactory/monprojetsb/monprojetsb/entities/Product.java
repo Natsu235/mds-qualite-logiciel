@@ -1,10 +1,13 @@
 package com.tactfactory.monprojetsb.monprojetsb.entities;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Product {
 
-	private Long id;
+	@Id @GeneratedValue private Long id;
 	private String firstname;
 	private String lastname;
 	private Float price;

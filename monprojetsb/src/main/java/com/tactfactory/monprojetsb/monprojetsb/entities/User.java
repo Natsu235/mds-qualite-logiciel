@@ -2,12 +2,18 @@ package com.tactfactory.monprojetsb.monprojetsb.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class User {
 
-	private Long id;
+	@Id @GeneratedValue private Long id;
 	private String firstname;
 	private String lastname;
-	private List<Product> products;
+	@OneToMany private List<Product> products;
 
 	public User() {
 		super();
