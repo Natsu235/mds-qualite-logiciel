@@ -14,6 +14,10 @@ public class ProductController {
 
 	@Autowired ProductRepository repository;
 
+	public ProductController(ProductRepository repository) {
+		this.repository = repository;
+	}
+
 	// Liste l'ensemble des attributs de l’entité pour tout les enregistrements
 	public void index() {
 		// TODO

@@ -14,6 +14,10 @@ public class UserController {
 
 	@Autowired UserRepository repository;
 
+	public UserController(UserRepository repository) {
+		this.repository = repository;
+	}
+
 	// Liste l'ensemble des attributs de l’entité pour tout les enregistrements
 	public void index() {
 		// TODO
