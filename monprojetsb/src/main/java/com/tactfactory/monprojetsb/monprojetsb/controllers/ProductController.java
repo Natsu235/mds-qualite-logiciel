@@ -18,17 +18,17 @@ import com.tactfactory.monprojetsb.monprojetsb.repositories.ProductRepository;
 public class ProductController {
 
 	@Autowired
-	private ProductRepository repository;
+	private ProductRepository productRepository;
 
-	public ProductController(ProductRepository repository) {
-		this.repository = repository;
+	public ProductController(ProductRepository productRepository) {
+		this.productRepository = productRepository;
 	}
 
 	// Liste l'ensemble des attributs d'un produit pour tous les enregistrements
 	@RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("page", "Product Index");
-		model.addAttribute("items", repository.findAll());
+		model.addAttribute("items", productRepository.findAll());
 		return "product/index";
 	}
 
@@ -43,7 +43,7 @@ public class ProductController {
 	@PostMapping(value = {"/create"})
     public String createPost(@ModelAttribute Product product) {
 		if (product != null)
-			repository.save(product);
+			productRepository.save(product);
 
 		return "redirect:index";
     }
@@ -52,7 +52,7 @@ public class ProductController {
 	@PostMapping(value = {"/delete"})
     public String delete(@ModelAttribute Product product) {
 		if (product != null)
-			repository.delete(product);
+			productRepository.delete(product);
 
 		return "redirect:index";
     }
@@ -60,7 +60,7 @@ public class ProductController {
     // Affiche les détails d’un produit
 	@GetMapping(value = {"/show/{id}"})
     public String details(Model model, @PathVariable(value = "id") String id) {
-        model.addAttribute("product", repository.getOne(Long.parseLong(id)));
-        return "product/detail";
+        model.addAttribute("product", productRepository.getOne(Long.parseLong(id)));
+        return "product/details";
     }
 }

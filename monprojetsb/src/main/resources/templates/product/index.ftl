@@ -1,3 +1,5 @@
+<!-- Product Index -->
+
 <#import "/spring.ftl" as spring/>
 
 <head>
@@ -5,25 +7,29 @@
 </head>
 
 <body>
-  <h1> Product Index </h1>
-  <a href="create">Create new</a>
+  <#if page??>
+    <h1> ${page} </h1>
+  </#if>
+  <form action="create">
+    <input type="submit" value="Add a new product" />
+  </form>
   <table class="table table-bordered table-hover">
     <tr>
-      <th>Name</th>
-      <th>Price</th>
+      <th>Name: </th>
+      <th>Price: </th>
     </tr>
     <#list items as item>
-    <tr>
-      <td>${item.name}</td>
-      <td>${item.price}</td>
-      <td><a href="show/${item["id"]}">Show</a></td>
-      <td>
-        <form action="delete" method="POST">
-          <input type="hidden" name="id" value="${item["id"]}">
-          <input type="submit" value="delete"/>
-        </form>
-      </td>
-    </tr>
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.price}</td>
+        <td><a href="show/${item["id"]}">Show</a></td>
+        <td>
+          <form action="delete" method="POST">
+            <input type="hidden" name="id" value="${item["id"]}">
+            <input type="submit" value="delete" />
+          </form>
+        </td>
+      </tr>
     </#list>
-   </table>
+  </table>
 </body>

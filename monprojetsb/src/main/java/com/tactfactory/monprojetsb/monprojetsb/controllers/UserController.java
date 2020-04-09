@@ -63,8 +63,9 @@ public class UserController {
 
     // Affiche les détails d’un utilisateur
 	@GetMapping(value = {"/show/{id}"})
-    public String details() {
-        // TODO
-        return "redirect:index";
+    public String details(Model model, @PathVariable(value = "id") String id) {
+		model.addAttribute("user", userRepository.getOne(Long.parseLong(id)));
+        model.addAttribute("items", userRepository.getOne(Long.parseLong(id)).getProducts());
+        return "user/details";
     }
 }
