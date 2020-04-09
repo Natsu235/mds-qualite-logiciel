@@ -8,7 +8,7 @@
 
 <body>
   <#if page??>
-    <h1> ${page} </h1>
+    <h1>${page}</h1>
   </#if>
   <form action="create">
     <input type="submit" value="Add a new product" />
@@ -25,8 +25,8 @@
         <td><a href="show/${item["id"]}">Show</a></td>
         <td>
           <form action="delete" method="POST">
-            <input type="hidden" name="id" value="${item["id"]}">
-            <input type="submit" value="delete" />
+            <input type="hidden" name="id" value="${item["id"]}" />
+            <input type="submit" value="Delete" />
           </form>
         </td>
       </tr>
