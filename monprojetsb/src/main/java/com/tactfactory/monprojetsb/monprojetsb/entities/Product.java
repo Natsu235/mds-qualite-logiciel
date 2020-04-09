@@ -7,7 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Product {
 
-	@Id @GeneratedValue private Long id;
+	@Id @GeneratedValue
+	private Long id;
 	private String firstname;
 	private String lastname;
 	private Float price;

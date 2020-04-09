@@ -10,10 +10,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class User {
 
-	@Id @GeneratedValue private Long id;
+	@Id @GeneratedValue
+	private Long id;
 	private String firstname;
 	private String lastname;
-	@OneToMany private List<Product> products;
+	@OneToMany
+	private List<Product> products;
 
 	public User() {
 		super();
