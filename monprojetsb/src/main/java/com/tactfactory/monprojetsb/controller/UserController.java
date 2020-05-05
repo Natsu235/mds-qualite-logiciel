@@ -1,4 +1,4 @@
-package com.tactfactory.monprojetsb.monprojetsb.controllers;
+package com.tactfactory.monprojetsb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tactfactory.monprojetsb.monprojetsb.entities.User;
-import com.tactfactory.monprojetsb.monprojetsb.repositories.ProductRepository;
-import com.tactfactory.monprojetsb.monprojetsb.repositories.UserRepository;
+import com.tactfactory.monprojetsb.entity.User;
+import com.tactfactory.monprojetsb.repository.ProductRepository;
+import com.tactfactory.monprojetsb.repository.UserRepository;
 
 @Controller
 @RequestMapping(value = "/user")

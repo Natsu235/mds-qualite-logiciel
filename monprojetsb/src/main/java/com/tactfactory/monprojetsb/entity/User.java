@@ -1,28 +1,34 @@
-package com.tactfactory.monprojetsb.monprojetsb.entities;
+package com.tactfactory.monprojetsb.entity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Product {
+public class User {
 
 	@Id @GeneratedValue
 	private Long id;
 	private String firstname;
 	private String lastname;
-	private Float price;
+	@OneToMany
+	private List<Product> products;
 
-	public Product() {
+	public User() {
 		super();
+		this.products = new ArrayList<Product>();
 	}
 
-	public Product(Long id, String firstname, String lastname, Float price) {
+	public User(Long id, String firstname, String lastname, List<Product> products) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.price = price;
+		this.products = products;
 	}
 
 	public Long getId() {
@@ -49,11 +55,11 @@ public class Product {
 		this.lastname = lastname;
 	}
 
-	public Float getPrice() {
-		return price;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setPrice(Float price) {
-		this.price = price;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 }

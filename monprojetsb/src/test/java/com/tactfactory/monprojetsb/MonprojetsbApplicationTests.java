@@ -1,4 +1,4 @@
-package com.tactfactory.monprojetsb.monprojetsb;
+package com.tactfactory.monprojetsb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
