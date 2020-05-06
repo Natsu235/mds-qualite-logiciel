@@ -11,7 +11,7 @@ import com.tactfactory.monprojetsb.repository.ProductRepository;
 @Service
 public class ProductService {
 
-	@Autowired
+    @Autowired
     private ProductRepository productRepository;
 
     public Product save(Product item) {

@@ -25,28 +25,42 @@ import com.tactfactory.monprojetsb.service.UserService;
 @ComponentScan(basePackages="com.tactfactory.monprojetsb")
 public class UserServiceTest {
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Autowired
+    @Autowired
     private ProductRepository productRepository;
 
-	@Before
+    // Initialise la base avant chaque test
+    @Before
     public void clear() {
         this.productRepository.deleteAll();
         this.userRepository.deleteAll();
     }
 
-	@Test
-	public void TestInsertOne() {
-		Long before = userRepository.count();
-		userService.save(new User());
-		Long after = userRepository.count();
+    // Test l'incrémentation lors de l'ajout d'un utilisateur
+    @Test
+    public void TestInsertOne() {
+        Long before = userRepository.count();
+        userService.save(new User());
+        Long after = userRepository.count();
 
-		assertEquals(before + 1, after);
+        assertEquals(before + 1, after);
 	}
+
+    // Test la décrémentation lors de la suppression d'un utilisateur
+    @Test
+    public void TestDeleteOne() {
+        User user = new User();
+        userService.save(user);
+        Long before = userRepository.count();
+        userService.delete(user);
+        Long after = userRepository.count();
+
+        assertEquals(before - 1, after);
+    }
 
 }

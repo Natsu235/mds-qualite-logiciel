@@ -24,7 +24,7 @@ import com.tactfactory.monprojetsb.repository.UserRepository;
 @ComponentScan(basePackages="com.tactfactory.monprojetsb")
 public class ProductServiceTest {
 
-	@Autowired
+    @Autowired
     private ProductService productService;
 
     @Autowired
@@ -33,13 +33,15 @@ public class ProductServiceTest {
     @Autowired
     private ProductRepository productRepository;
 
+    // Initialise la base avant chaque test
     @Before
     public void clear() {
         this.productRepository.deleteAll();
         this.userRepository.deleteAll();
     }
 
-	@Test
+    // Test l'incrémentation lors de l'ajout d'un produit
+    @Test
     public void TestInsertOne() {
         Long before = productRepository.count();
         productService.save(new Product());
@@ -48,7 +50,8 @@ public class ProductServiceTest {
         assertEquals(before + 1, after);
     }
 
-	@Test
+    // Test la décrémentation lors de la suppression d'un produit
+    @Test
     public void TestDeleteOne() {
         Product product = new Product();
         productService.save(product);

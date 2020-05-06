@@ -17,50 +17,51 @@ import com.tactfactory.monprojetsb.repository.ProductRepository;
 @RequestMapping(value = "/product")
 public class ProductController {
 
-	@Autowired
-	private ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-	public ProductController(ProductRepository productRepository) {
-		this.productRepository = productRepository;
-	}
+    public ProductController(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
-	// Liste l'ensemble des attributs d'un produit pour tous les enregistrements
-	@RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
-	public String index(Model model) {
-		model.addAttribute("page", "Product Index");
-		model.addAttribute("items", productRepository.findAll());
-		return "product/index";
-	}
+    // Liste l'ensemble des attributs d'un produit pour tous les enregistrements
+    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
+    public String index(Model model) {
+        model.addAttribute("page", "Product Index");
+        model.addAttribute("items", productRepository.findAll());
+        return "product/index";
+    }
 
-	// Affiche la vue de création d'un produit
-	@GetMapping(value = {"/create"})
-	public String createGet(Model model) {
-		model.addAttribute("page", "Product Create");
-		return "product/create";
-	}
+    // Affiche la vue de création d'un produit
+    @GetMapping(value = {"/create"})
+    public String createGet(Model model) {
+        model.addAttribute("page", "Product Create");
+        return "product/create";
+    }
 
     // Envoie les informations du produit vers le serveur
-	@PostMapping(value = {"/create"})
+    @PostMapping(value = {"/create"})
     public String createPost(@ModelAttribute Product product) {
-		if (product != null)
-			productRepository.save(product);
+        if (product != null)
+            productRepository.save(product);
 
-		return "redirect:index";
+        return "redirect:index";
     }
 
     // Supprime un produit de la base de données
-	@PostMapping(value = {"/delete"})
+    @PostMapping(value = {"/delete"})
     public String delete(@ModelAttribute Product product) {
-		if (product != null)
-			productRepository.delete(product);
+        if (product != null)
+            productRepository.delete(product);
 
-		return "redirect:index";
+        return "redirect:index";
     }
 
     // Affiche les détails d’un produit
-	@GetMapping(value = {"/show/{id}"})
+    @GetMapping(value = {"/show/{id}"})
     public String details(Model model, @PathVariable(value = "id") String id) {
         model.addAttribute("product", productRepository.getOne(Long.parseLong(id)));
         return "product/details";
     }
+
 }

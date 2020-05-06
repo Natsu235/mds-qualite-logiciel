@@ -11,10 +11,10 @@ import com.tactfactory.monprojetsb.repository.UserRepository;
 @Service
 public class UserService {
 
-	@Autowired
+    @Autowired
     private UserRepository userRepository;
 
-	public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
