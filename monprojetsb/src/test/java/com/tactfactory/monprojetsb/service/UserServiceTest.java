@@ -56,7 +56,7 @@ public class UserServiceTest {
     public void setUp() throws Exception {
         final MockitoUserRepository userMock = new MockitoUserRepository(this.userRepository);
         userMock.init();
-        this.user = userMock.user;
+        this.user = userMock.entity;
     }
 
     // Initialise la base avant chaque test

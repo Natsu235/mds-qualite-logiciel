@@ -7,4 +7,7 @@ public class MockitoProductRepository {
     public MockitoProductRepository(ProductRepository productRepository) {
     }
 
+    public void init() {
+    }
+
 }
